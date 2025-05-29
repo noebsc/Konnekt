@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Télécharger Konnekt</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        .app-logo {
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .download-btn {
+            background: #183476;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(24, 52, 118, 0.4);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(24, 52, 118, 0.6);
+            background: #1a3b85;
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
+
+        .info-text {
+            color: #666;
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin-top: 20px;
+                padding: 30px 20px;
+            }
+            
+            .app-logo {
+                max-width: 150px;
+            }
+            
+            .download-btn {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Remplacez "logo.png" par le nom de votre image -->
+        <img src="logo.png" alt="Logo de l'app" class="app-logo">
+        
+        <!-- Remplacez "releases/app-latest.apk" par le chemin vers votre APK -->
+        <a href="releases/app-latest.apk" class="download-btn" download>
+            📱 Télécharger l'app
+        </a>
+        
+        <p class="info-text">
+            Cliquez sur le bouton pour télécharger la dernière version.<br>
+            Vous devrez peut-être autoriser l'installation depuis des sources inconnues dans vos paramètres Android.
+        </p>
+    </div>
+</body>
+</html>
