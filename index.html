@@ -13,12 +13,78 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: white;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Animations d'entrée */
+        @keyframes slideInFromTop {
+            0% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            0% {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromRight {
+            0% {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromBottom {
+            0% {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
         }
 
         .container {
@@ -30,6 +96,7 @@
             max-width: 500px;
             width: 100%;
             margin-top: 50px;
+            animation: scaleIn 1s ease-out;
         }
 
         .app-logo {
@@ -39,6 +106,7 @@
             margin-bottom: 30px;
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            animation: slideInFromTop 1s ease-out 0.2s both;
         }
 
         .download-btn {
@@ -54,12 +122,14 @@
             box-shadow: 0 4px 15px rgba(24, 52, 118, 0.4);
             text-decoration: none;
             display: inline-block;
+            animation: slideInFromLeft 1s ease-out 0.4s both;
         }
 
         .download-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(24, 52, 118, 0.6);
             background: #1a3b85;
+            animation: pulse 2s infinite;
         }
 
         .download-btn:active {
@@ -71,6 +141,157 @@
             margin-top: 20px;
             font-size: 14px;
             line-height: 1.5;
+            animation: slideInFromRight 1s ease-out 0.6s both;
+        }
+
+        .footer {
+            margin-top: auto;
+            padding: 20px 0;
+            text-align: center;
+            animation: slideInFromBottom 1s ease-out 0.8s both;
+        }
+
+        .license-btn {
+            background: transparent;
+            color: #666;
+            border: 1px solid #ddd;
+            padding: 8px 16px;
+            font-size: 12px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        .license-btn:hover {
+            background: #f0f0f0;
+            border-color: #183476;
+            color: #183476;
+        }
+
+        .copyright {
+            font-size: 11px;
+            color: #999;
+            margin-top: 10px;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 80%;
+            max-height: 80%;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transform: scale(0.7);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .close-btn {
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+            margin-top: -10px;
+        }
+
+        .close-btn:hover {
+            color: #183476;
+        }
+
+        .license-text {
+            font-family: monospace;
+            font-size: 12px;
+            line-height: 1.4;
+            color: #333;
+            white-space: pre-wrap;
+        }
+
+        .thank-you-modal .modal-content {
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .thank-you-title {
+            color: #183476;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .thank-you-text {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .email-link {
+            color: #183476;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
+        }
+
+        .features-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            animation: slideInFromBottom 1s ease-out 1s both;
+        }
+
+        .features-title {
+            color: #183476;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .feature-icon {
+            margin-right: 10px;
+            font-size: 16px;
         }
 
         @media (max-width: 600px) {
@@ -87,23 +308,169 @@
                 padding: 12px 25px;
                 font-size: 16px;
             }
+
+            .modal-content {
+                max-width: 95%;
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Remplacez "logo.png" par le nom de votre image -->
-        <img src="logo.png" alt="Logo de l'app" class="app-logo">
+        <img src="logo.png" alt="Logo Konnekt" class="app-logo">
         
-        <!-- Remplacez "releases/app-latest.apk" par le chemin vers votre APK -->
-        <a href="releases/Konnekt.apk" class="download-btn" download>
-            📱 Télécharger l'app
+        <a href="releases/Konnekt.apk" class="download-btn" download onclick="showThankYou()">
+            📱 Télécharger Konnekt
         </a>
         
         <p class="info-text">
             Cliquez sur le bouton pour télécharger la dernière version.<br>
             Vous devrez peut-être autoriser l'installation depuis des sources inconnues dans vos paramètres Android.
         </p>
+
+        <div class="features-section">
+            <div class="feature-item">
+                <span class="feature-icon">📱</span>
+                <span>Compatible Android 5.0+</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🛡️</span>
+                <span>Application sécurisée</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">⚡</span>
+                <span>Installation très rapide et sécurisée</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🇫🇷</span>
+                <span>Données stockées en France</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">∞</span>
+                <span>Aucune limite</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🕶️</span>
+                <span>Discussions anonymes</span>
+            </div>
+        </div>
     </div>
+
+    <div class="footer">
+        <button class="license-btn" onclick="showLicense()">📄 Licence MIT</button>
+        <div class="copyright">
+            © 2025 Konnekt - Tous droits réservés<br>
+            Développé avec ❤️ par Noé Besançon
+        </div>
+    </div>
+
+    <!-- Modal Licence -->
+    <div id="licenseModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeLicense()">&times;</span>
+            <h3 style="color: #183476; margin-bottom: 20px;">Licence MIT - Konnekt</h3>
+            <div class="license-text">MIT License
+
+Copyright (c) 2025 Konnekt - Noé Besançon
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</div>
+        </div>
+    </div>
+
+    <!-- Modal Remerciement -->
+    <div id="thankYouModal" class="modal thank-you-modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeThankYou()">&times;</span>
+            <h2 class="thank-you-title">🎉 Merci pour le téléchargement !</h2>
+            <p class="thank-you-text">
+                Konnekt a été téléchargé avec succès !<br>
+                Profitez bien de l'application et n'hésitez pas à nous faire part de vos retours.
+            </p>
+            <div class="contact-info">
+                <strong>Des questions ou des problèmes ?</strong><br>
+                Contactez-nous : <a href="mailto:besancon.noe@gmail.com?subject=Konnekt - Question" class="email-link">besancon.noe@gmail.com</a><br>
+                <small>💡 N'oubliez pas de préciser "Konnekt" dans l'objet de votre email</small>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour afficher la licence
+        function showLicense() {
+            const modal = document.getElementById('licenseModal');
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('show'), 10);
+        }
+
+        // Fonction pour fermer la licence
+        function closeLicense() {
+            const modal = document.getElementById('licenseModal');
+            modal.classList.remove('show');
+            setTimeout(() => modal.style.display = 'none', 300);
+        }
+
+        // Fonction pour afficher les remerciements
+        function showThankYou() {
+            setTimeout(() => {
+                const modal = document.getElementById('thankYouModal');
+                modal.style.display = 'flex';
+                setTimeout(() => modal.classList.add('show'), 10);
+            }, 500);
+        }
+
+        // Fonction pour fermer les remerciements
+        function closeThankYou() {
+            const modal = document.getElementById('thankYouModal');
+            modal.classList.remove('show');
+            setTimeout(() => modal.style.display = 'none', 300);
+        }
+
+        // Fermer les modals en cliquant à l'extérieur
+        window.onclick = function(event) {
+            const licenseModal = document.getElementById('licenseModal');
+            const thankYouModal = document.getElementById('thankYouModal');
+            
+            if (event.target === licenseModal) {
+                closeLicense();
+            }
+            if (event.target === thankYouModal) {
+                closeThankYou();
+            }
+        }
+
+        // Animation du bouton de téléchargement
+        document.querySelector('.download-btn').addEventListener('mouseenter', function() {
+            this.style.animation = 'pulse 0.6s ease-in-out';
+        });
+
+        document.querySelector('.download-btn').addEventListener('mouseleave', function() {
+            this.style.animation = '';
+        });
+
+        // Effet de particules sur le logo
+        document.querySelector('.app-logo').addEventListener('click', function() {
+            this.style.animation = 'pulse 0.5s ease-in-out';
+            setTimeout(() => {
+                this.style.animation = '';
+            }, 500);
+        });
+    </script>
 </body>
 </html>
